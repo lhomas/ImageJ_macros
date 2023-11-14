@@ -54,6 +54,4 @@ ${7}; done
 # Go to output directory and combine all macros into a single file that can be run on ImageJ
 cd ${6}/${2}/${3}
 
-touch complete_macro_${2}_${3}.txt
-
 cat *.txt > complete_macro_${2}_${3}.txt
