@@ -1,0 +1,47 @@
+//PATH1 = Full path to .TIF to be analysed
+//FILE = File name without path
+//OUTPUT = Path to output location
+//PREFIX = File name without path or .TIF extension
+//DAPI = DAPI cell counting minimum threshold
+//SECODARY = Secondary signal minimum threshold
+//
+//Comments, to run macro, highlght commands and go to tab "Macros" and select "Run macro" OR command key + R
+open("PATH1");
+run("Split Channels");	
+run("8-bit");
+//Count DAPI+ cells
+selectWindow("FILE (blue)");
+run("Grays")
+setAutoThreshold("Otsu dark");
+setOption("BlackBackground", false);
+run("Convert to Mask");
+run("Fill Holes");
+run("Watershed");
+run("Set Scale...", "distance=59.06 known=1 pixel=1 unit=cm");
+run("Analyze Particles...", "size=0.030-Infinity show=Outlines display summarize");
+// Secondary signal
+selectWindow("FILE (green)");
+run("Grays")
+setAutoThreshold("Default dark");
+//Decide good threshold (min= x, max=255)
+setThreshold(minthresh, 255);
+setOption("BlackBackground", false);
+run("Convert to Mask");
+run("Create Selection");
+run("Select All");
+//Stack images of red AND dapi
+imageCalculator("AND create","FILE (blue)", "FILE (green)");
+//Count DAPI in area with red fluorescence signal
+selectWindow("Result of FILE (blue)");
+run("Grays")
+setAutoThreshold("Otsu dark");
+setOption("BlackBackground", false);
+run("Convert to Mask");
+run("Fill Holes");
+run("Watershed");
+run("Set Scale...", "distance=59.06 known=1 pixel=1 unit=cm");
+run("Analyze Particles...", "size=0.030-Infinity show=Outlines display summarize");
+selectWindow("Summary");
+//Save a summary table
+saveAs("Results", "OUTPUT/PREFIX_summary.csv");
+run("Close All");
