@@ -12,7 +12,9 @@ run("8-bit");
 //Count DAPI+ cells
 selectWindow("FILE (blue)");
 run("Grays")
+run("Subtract Background...", "rolling=15");
 setAutoThreshold("Otsu dark");
+//setThreshold(DAPI, 255);
 setOption("BlackBackground", false);
 run("Convert to Mask");
 run("Fill Holes");
@@ -24,7 +26,8 @@ selectWindow("FILE (green)");
 run("Grays")
 setAutoThreshold("Default dark");
 //Decide good threshold (min= x, max=255)
-setThreshold(minthresh, 255);
+run("Subtract Background...", "rolling=15");
+setThreshold(SECONDARY, 255);
 setOption("BlackBackground", false);
 run("Convert to Mask");
 run("Create Selection");
