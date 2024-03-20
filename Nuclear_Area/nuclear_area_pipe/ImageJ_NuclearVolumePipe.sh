@@ -32,7 +32,7 @@ echo "# Pipeline to generate macros for cell counting to generate transfection e
 }
 
 # Set path of script used to generate macro files
-MACROGEN=~/Immunofluorescence/Macros/nuclear_volume/NuclearVolumePipe/NuclearVolumeMacroGen.sh
+MACROGEN=/Users/thomaslitster/Immunofluorescence/ImageJ_Macros/Nuclear_Area/nuclear_area_pipe/NuclearVolumeMacroGen.sh
 
 # Make output directory 
 mkdir -p ${3}
