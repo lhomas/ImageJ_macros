@@ -48,4 +48,4 @@ ${4} ; done
 # Go to output directory and combine all macros into a single file that can be run on ImageJ
 cd ${3}/${2}
 
-cat *.ijm > complete_macro_${2}.ijm
+cat *.ijm > ./complete_macro_${2}.ijm
