@@ -16,7 +16,7 @@ PREFIX=$(basename ${1} .TIF)
 mkdir -p ${OUTPATH}
 
 cat ${4} | \
-sed -e "s@PATH@${PATH1}@g" \
+sed -e "s@PATH1@${PATH1}@g" \
 -e "s@FILE@${FILE}@g" \
 -e "s@OUTPUT@${OUTPATH}@g" \
 -e "s@PREFIX@${PREFIX}@g" \
