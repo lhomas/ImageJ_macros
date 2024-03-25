@@ -56,6 +56,9 @@ saveAs("Tiff", "OUTPUT/PREFIX_NuclearOverlay(green).tif");
 //Save measurements made my imageJ as .csv file
 saveAs("Results", "OUTPUT/PREFIX_NuclearOverlay_ROI_measures.csv");
 
+// Delete current measurements from the results table
+Table.deleteRows(0,Table.size);
+
 // Clear ROI manager
 roiManager("Delete");
 
