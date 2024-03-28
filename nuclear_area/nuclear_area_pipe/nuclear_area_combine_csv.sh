@@ -59,11 +59,12 @@ if [ -z "${pattern}" ]; then # If no pattern provided, .csv will be set as defau
 fi
 
 # Create file with header containing column labels
-echo "Cell$(head -n 1 $(ls *${pattern} | ls $(head -n 1)))" | sed 's/ //g' > ${prefix}_nuclear_area_combined.csv
+echo "Cell$(head -n 1 $(ls *${pattern} | ls $(head -n 1)))" | sed 's/ //g' > ${prefix}_nuclear_area_combined.txt
 
 # Add data from specified .csv files to above created .csv
 for i in $(seq $(ls *${pattern} | wc -l));
 do
-	awk -v line=${i} -v title=${label} 'NR > 1 {print title"_"line"_"$0}' *_${i}_*${pattern} >> ${prefix}_nuclear_area_combined.csv
+	awk -v line=${i} -v title=${label} 'NR > 1 {print title"_"line"_"$0}' *_${i}_*${pattern} >> ${prefix}_nuclear_area_combined.txt
 done
 
+mv ${prefix}_nuclear_area_combined.txt ${prefix}_nuclear_area_combined.csv
