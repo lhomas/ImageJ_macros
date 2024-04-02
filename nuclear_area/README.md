@@ -18,3 +18,13 @@ The macros produced are in the ImageJ Macro Language (.IJM files). These macros 
 6. Save statistics and green fluorsecnece with nuclear outline overlay (.TIF).
 
 Depening on the instensity of the signal you are imaging, you may need to change the thresholding that is completed to one of the other auto options or with user defined seetings. 
+
+# Pipeline Versions
+
+In early 2024 the lab updated the the camera and software used to take images from axio vision to ZEN Zeiss software suite. This change has lead to some minor alterations in the images export. As such, two different version of the pipeline area needed to allow for these differences. Currenlty the major differences are as follows:
+1. Nuclear Area Pipe Script: The pattern used to identify the merged channel images to be input into the macro gen pipeline.
+2. MacroTemplate: The value used to set the scale of the image within the ImageJ macro was changed as the pixels in the images are a different size in images taken with ZEN compared to AxioVision.
+
+Any additional changes will be included above.
+
+The macrogen script and merge csv results scripts are unchanged. These changes were introduced at v2 of the nuclear area macro. When analysing images produced with ZEN Zeiss Software, use versions of scripts and macros with .ZEN. in the name.
