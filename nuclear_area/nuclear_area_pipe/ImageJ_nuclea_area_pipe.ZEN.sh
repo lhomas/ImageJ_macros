@@ -38,7 +38,7 @@ MACROGEN=/Users/thomaslitster/Immunofluorescence/ImageJ_Macros/Nuclear_Area/nucl
 mkdir -p ${3}
 
 # Generate macro for each image taken from a given coverslip.
-ls ${1}/*/*-*.TIF | while read r; do \
+ls ${1}/*/*-*.tif | while read r; do \
 bash ${MACROGEN} \
 ${r} \
 ${2} \
