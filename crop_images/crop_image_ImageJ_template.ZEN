@@ -1,0 +1,30 @@
+
+// Open image for red channel
+open("CURRENT/LOCATION/LOCATION_c3_BW.tif");
+
+// Make Rectangular selection
+makeRectangle(DIM1, DIM2, DIM3, DIM4);
+
+// Make cropped duplicate of image
+run("Duplicate...", "title=LOCATION_c3_CELL.tif");
+
+// Save cropped image as .tif file
+saveAs("Tiff", "CURRENT/LOCATION/LOCATION_c3_BW.CELL.tif");
+
+// Close all current images
+run("Close All");
+
+// Open image for blue channel
+open("CURRENT/LOCATION/LOCATION_c1_BW.tif");
+
+// Make Rectangular selection
+makeRectangle(DIM1, DIM2, DIM3, DIM4);
+
+// Make cropped duplicate of image
+run("Duplicate...", "title=LOCATION_c3_CELL.tif");
+
+// Save cropped image as .tif file
+saveAs("Tiff", "CURRENT/LOCATION/LOCATION_c1_BW.CELL.tif");
+
+// Close all current images
+run("Close All");
