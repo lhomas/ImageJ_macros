@@ -62,9 +62,9 @@ if [ -z "${prefix}" ]; then # If not output prefix is provided, do not continue
 	exit 1
 fi
 
-if [ ! -f "${inputs}" ]; then # If input file is not provided or it does not exist, do not continue
+if [ -z "${inputs}" ]; then # If input file is not provided or it does not exist, do not continue
 	usage
-	echo "## ERROR: No input file was provided, or the provided file does not exist, please provide a list of directories to search for .csv files"
+	echo "## ERROR: No input file was provided, please provide a list of directories to search for .csv files"
 	exit 1
 fi
 
